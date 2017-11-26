@@ -14,13 +14,14 @@
         <h2>Search by:</h2>
 
         <p>
+
             <span th:each="column : ${columns}">
                 <input
                         type="radio"
                         name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
+                        th:checked="${column.key == currSearchType }"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
 
@@ -28,7 +29,7 @@
 
         <p>
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" th:value="${currSearch}" name="searchTerm" id="searchTerm" />
         </p>
 
         <input type="submit" value="Search" />
@@ -37,7 +38,12 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
-
+    <table class="job-listing" th:each="job :${jobs}">
+        <tr th:each="j : ${job}">
+            <td th:text="${#strings.capitalizeWords(j.key)}"></td>
+            <td th:text="${j.value}"></td>
+        </tr>
+    </table>
 </div>
 
 </body>

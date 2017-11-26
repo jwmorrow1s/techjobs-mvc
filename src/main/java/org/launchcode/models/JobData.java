@@ -80,8 +80,12 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
+            /* returns all a column's values if there is no searchTerm */
+            if(value == ""){
+                jobs.add(row);
+            }
 
-            if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
+            else if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
