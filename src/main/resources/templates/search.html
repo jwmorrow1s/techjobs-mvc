@@ -38,12 +38,14 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
+    <h3 th:text="${jobs.size() + ' result(s) found'}"></h3>
     <table class="job-listing" th:each="job :${jobs}">
         <tr th:each="j : ${job}">
             <td th:text="${#strings.capitalizeWords(j.key)}"></td>
             <td th:text="${j.value}"></td>
         </tr>
     </table>
+    <h3 th:unless="${jobs.size()}" th:text="${'No results found :('}"></h3>
 </div>
 
 </body>

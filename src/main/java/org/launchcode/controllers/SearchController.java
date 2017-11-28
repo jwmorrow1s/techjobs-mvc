@@ -23,7 +23,7 @@ public class SearchController {
     public String search(Model model) {
         ArrayList<HashMap<String,String>> allJobs = JobData.findAll();
         model.addAttribute("columns", ListController.columnChoices);
-        model.addAttribute("allJobs", allJobs);
+        model.addAttribute("jobs", allJobs);
         model.addAttribute("currSearch", "");
         model.addAttribute("currSearchType", "all");
 
